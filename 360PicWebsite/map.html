@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {
+	text-align: center;
+	}
+input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<head>
+<title> 360° SL Building Tour</title>
+<script src="changeImage.js"></script>
+</head>
+<body>	
+	<h1 id="maintit"> Welcome to the 360° tour of the SL Building</h1>
+	<img id = "mapLD" src = "vrtour/map.png" style="max-height: 442px;" class="center" usemap="#imageMapping"/>
+	<map name ="imageMapping">
+		<area id = "entrance" shape="circle" coords="723,99,10"   href="#" onclick="changePic(0)">
+		<area id = "01"       shape="circle" coords="639,99,10"   href="#" onclick="changePic(1)">
+		<area id = "02"       shape="circle" coords="591,99,10"   href="#" onclick="changePic(2)">
+		<area id = "03"       shape="circle" coords="506,99,10"   href="#" onclick="changePic(3)">
+		<area id = "04"       shape="circle" coords="408,99,10"   href="#" onclick="changePic(4)">
+		<area id = "05"       shape="circle" coords="345,99,10"   href="#" onclick="changePic(5)">
+		<area id = "06"       shape="circle" coords="243,99,10"   href="#" onclick="changePic(6)">
+		<area id = "07"       shape="circle" coords="136,99,10"   href="#" onclick="changePic(7)">
+		<area id = "08"       shape="circle" coords="51,99,10"    href="#" onclick="changePic(8)">
+		<area id = "09"       shape="circle" coords="345,156,10"  href="#" onclick="changePic(9)">
+		<area id = "10"       shape="circle" coords="345,200,10"  href="#" onclick="changePic(10)">
+		<area id = "11"       shape="circle" coords="345,275,10"  href="#" onclick="changePic(11)">
+		<area id = "12"       shape="circle" coords="345,356,10"  href="#" onclick="changePic(12)">
+		<area id = "13"       shape="circle" coords="417,358,10"  href="#" onclick="changePic(13)">
+		<area id = "14"       shape="circle" coords="512,357,10"  href="#" onclick="changePic(14)">
+		<area id = "15"       shape="circle" coords="481,395,10"  href="#" onclick="changePic(15)">
+		<area id = "16"       shape="circle" coords="592,358,10"  href="#" onclick="changePic(16)">
+		<area id = "17"       shape="circle" coords="592,282,10"  href="#" onclick="changePic(17)">
+		<area id = "18"       shape="circle" coords="592,175,10"  href="#" onclick="changePic(18)">
+		<area id = "sl251"    shape="circle" coords="473,162,10"  href="#" onclick="changePic(19)">
+	</map>
+		<img id = "tempPic" src ="vrtour/entrance.jpg" style="max-height: 442px;" class="center">
+		<input type=button onClick="location.href='tour.html'" value='click here to take a VR Tour' style="font-size : 25px">
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>ImageSOBEL</title>
+ 
+</head>
+
+<body>
+	<header>
+		<h1>Image Gradients and Edges</h1>
+		<p>By Paul Joy</p><br>
+		
+    </header>
+	<div>
+		<p>Original Image:</p>
+		<img src="images/tiger.jpg" style="max-height: 500px; max-width: 500px;"></img>
+	</div>
+	
+	<hr>
+	<p>
+		(1) Computing a gradient image (all positive values) from the horizontal and vertical differential images 
+		(containing both positive and negative values). Display both results for 3*3 and 5*5 filters.<br>
+	</p>
+	<div>
+		<p>Gradient 3x3:</p>
+		<img src="images/gradient3.jpg" style="max-height: 500px; max-width: 500px;"></img>
+	</div>
+	<div>
+		<p>Gradient 5x5:</p>
+		<img src="images/gradient5.jpg" style="max-height: 500px; max-width: 500px;"></img>
+	</div>
+	
+	<hr>
+	<p>
+	(2) Detecting edges at  peaks of gradient values horizontally and vertically over a threshold. The threshold can 
+	be selected manually through multiple trial and error so that the edge results show good shape of scenes. Edge 
+	must be one pixel wide and marked in a bright intensity.
+	</p>
+	<div>
+		<p>Edges 3x3:</p>
+		<img src="images/sobel3.jpg" style="max-height: 500px; max-width: 500px;"></img>
+	</div>
+	<div>
+		<p>Edges 5x5:</p>
+		<img src="images/sobel5.jpg" style="max-height: 500px; max-width: 500px;"></img>
+	</div>
+	
+	<hr>
+	
+	<p>Using the following code: <a href="/~pjoyjr/files/cpp/gradientEdge.cpp">View</a></p>
+	</br>		
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>ImageHIS</title>
+ 
+</head>
+
+<body>
+	<header>
+		<h1>Image Hue/Intensity/Saturation</h1>
+		<p>By Paul Joy</p><br>
+		<p>
+		Find two color photos (one more colorful than the other) and compute three output images for each of them to display their HIS values.<br>
+		These output images are in gray level with pixel intensity in [0, 255], which represent Intensity, Saturation, and Hue of the color
+		pixel in the photo. <br>
+		<br>
+		</p>
+    </header>
+	
+	<hr>
+	
+	<div>
+		<p>Original Image:</p>
+		<img src="images/vegas.jpg" style="max-height: 1200px; max-width: 823px;"></img>
+	</div>
+	<div>
+		<p>Hue average value: 115.46</p>
+		<img src="images/vegasHue.jpg" style="max-height: 1200px; max-width: 823px;"></img>
+	</div>
+	<div>
+		<p>Intensity average value: 131.88</p>
+		<img src="images/vegasInt.jpg" style="max-height: 1200px; max-width: 823px;"></img>
+	</div>
+	<div>
+		<p>Saturation average value: 49.75</p>
+		<img src="images/vegasSat.jpg" style="max-height: 1200px; max-width: 823px;"></img>
+	</div>
+	
+	<hr>
+	
+	<div>
+		<p>Original Image:</p>
+		<img src="images/graffiti.jpg" style="max-height: 1024px; max-width: 574px;"></img>
+	</div>
+	<div>
+		<p>Hue average value: 116.90</p>
+		<img src="images/graffitiHue.jpg" style="max-height: 1024px; max-width: 574px;"></img>
+	</div>
+	<div>
+		<p>Intensity average value: 79.59</p>
+		<img src="images/graffitiInt.jpg" style="max-height: 1024px; max-width: 574px;"></img>
+	</div>
+	<div>
+		<p>Saturation average value: 60.20</p>
+		<img src="images/graffitiSat.jpg" style="max-height: 1024px; max-width: 574px;"></img>
+	</div>
+	<hr/>
+	
+	<p>Using the following code: <a href="/~pjoyjr/files/cpp/imageHIS.cpp">View</a></p>
+	</br>		
+</body>
+</html>

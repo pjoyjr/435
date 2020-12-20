@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SL Building 2nd floor Virtual Tour</title>
+    <meta name="description" content="WebVR - Aframe - VR walkthrough">
+    <meta name="author" content="Kumar Ahir - VR Designer">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent('hotspots',{
+        init:function(){
+            this.el.addEventListener('reloadspots',function(evt){
+            
+            //get the entire current spot group and scale it to 0
+            var currspotgroup=document.getElementById(evt.detail.currspots);
+            currspotgroup.setAttribute("scale","0 0 0");
+            
+            //get the entire new spot group and scale it to 1
+            var newspotgroup=document.getElementById(evt.detail.newspots);
+            newspotgroup.setAttribute("scale","1 1 1");
+          });
+        }
+      });
+      AFRAME.registerComponent('spot',{
+        schema:{
+          linkto:{type:"string",default:""},
+          spotgroup:{type:"string",default:""}
+        },
+        init:function(){
+          
+          //add image source of hotspot icon
+          this.el.setAttribute("src","#hotspot");
+          //make the icon look at the camera all the time
+          this.el.setAttribute("look-at","#cam");
+          
+          var data=this.data;
+          
+          this.el.addEventListener('click',function(){
+            //set the skybox source to the new image as per the spot
+            var sky=document.getElementById("skybox");
+            sky.setAttribute("src",data.linkto);
+            
+            var spotcomp=document.getElementById("spots");
+            var currspots=this.parentElement.getAttribute("id");
+            //create event for spots component to change the spots data
+            spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene background="color: #ECECEC">
+      <a-assets>
+       <img id="point1" src="vrtour/01.jpg"/> 
+        <img id="point2" src="vrtour/02.jpg"/> 
+        <img id="point3" src="vrtour/03.jpg"/> 
+        <img id="point4" src="vrtour/04.jpg"/> 
+        <img id="point5" src="vrtour/05.jpg"/> 
+        <img id="point6" src="vrtour/06.jpg"/> 
+        <img id="point7" src="vrtour/07.jpg"/>
+        <img id="point8" src="vrtour/08.jpg"/> 
+        <img id="point9R" src="vrtour/09R.jpg"/> 
+		<img id="point9L" src="vrtour/09L.jpg"/>
+        <img id="point10" src="vrtour/10.jpg"/> 
+		<img id="point10R" src="vrtour/10R.jpg"/>
+        <img id="point11" src="vrtour/11.jpg"/>
+		<img id="point11L" src="vrtour/11L.jpg"/>
+        <img id="point12" src="vrtour/12.jpg"/>
+		<img id="point12B" src="vrtour/12B.jpg"/>
+        <img id="point13" src="vrtour/13.jpg"/>
+		<img id="point13B" src="vrtour/13B.jpg"/>
+        <img id="point14" src="vrtour/14.jpg"/> 
+        <img id="point15" src="vrtour/15.jpg"/> 
+		<img id="point14B" src="vrtour/14B.jpg"/>
+        <img id="point16" src="vrtour/16.jpg"/> 
+		<img id="point16B" src="vrtour/16B.jpg"/>
+        <img id="point17" src="vrtour/17.jpg"/>
+		<img id="point17L" src="vrtour/17L.jpg"/>
+        <img id="point18" src="vrtour/18.jpg"/> 
+        <img id="point18L" src="vrtour/18L.jpg"/> 
+        <img id="pointSL" src="vrtour/sl251.jpg"/> 
+        <img id="pointEN" src="vrtour/entrance.jpg"/>		
+        <img id="hotspot" src="vrtour/arrow.png"/>
+      </a-assets>
+      
+		<a-entity id="spots" hotspots>
+			<a-entity id="group-pointEN">
+			<!-- position l/r - u/d  f/b-->
+			<!-- position="0 0 -10" full front -->
+			<!-- Entrance -->
+			<a-image spot="linkto:#point1;spotgroup:group-point1" position="-.2 0 -10" width="2" height="2"></a-image>
+        </a-entity>
+        
+		<a-entity id="group-point1" scale="0 0 0">
+			<!-- position="0 0 -10" full front -->
+			<!-- Hallway straight-->
+			<a-image spot="linkto:#point2;spotgroup:group-point2" position="-.2 0 -10" width="2" height="2"></a-image>
+			<!-- position="0 0 10" full back -->
+			<!-- Entrance -->
+			<a-image spot="linkto:#pointEN;spotgroup:group-pointEN" position="1.2 0 10" width="2" height="2"></a-image>
+		</a-entity>
+        
+		
+		<a-entity id="group-point2" scale="0 0 0">
+			<!-- position="0 0 -10" full front -->
+			<a-image spot="linkto:#point3;spotgroup:group-point3" position="-.2 0 -10" width="2" height="2"></a-image>
+			<!-- position="0 0 -10" full back  -->
+			<a-image spot="linkto:#point1;spotgroup:group-point1" position="0 0 10" width="2" height="2"></a-image>
+			<!-- position="0 0 -10" /// left -->
+			<a-image spot="linkto:#point18L;spotgroup:group-point18L" position="-8 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point18L" scale="0 0 0">
+			<!--  /// right is BACK in this view -->
+			<a-image spot="linkto:#point2;spotgroup:group-point2" position="6 0 0" width="2" height="2"></a-image>
+			<!-- position="0 0 -10" /// left is FRONT in this view -->
+			<a-image spot="linkto:#point17L;spotgroup:group-point17L" position="-10 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		
+		<a-entity id="group-point17L" scale="0 0 0">
+			<!--  /// right is BACK in this view -->
+			<a-image spot="linkto:#point18L;spotgroup:group-point18L" position="6 0 0" width="2" height="2"></a-image>
+			<!-- position="0 0 -10" /// left is FRONT in this view -->
+			<!-- SL251 -->
+			<a-image spot="linkto:#point16B;spotgroup:group-point16B" position="-6 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		
+		<a-entity id="group-point16B" scale="0 0 0">
+			<!-- right which is... /// RIGHT -->
+			<a-image spot="linkto:#point17L;spotgroup:group-point17L" position="6 0 0" width="2" height="2"></a-image>
+			<!-- position="0 0 -10" /// Back -->
+			<a-image spot="linkto:#point14;spotgroup:group-point14" position="-.2 0 -10" width="2" height="2"></a-image> 
+			</a-entity>
+			
+		</a-entity>
+    
+		<a-entity id="group-point14" scale="0 0 0">
+			<!-- position="0 0 -10" /// left -->
+			<a-image spot="linkto:#point15;spotgroup:group-point15" position="-6 0 -5" width="2" height="2"></a-image>
+			<!-- position="0 0 -10" /// Back -->
+			<a-image spot="linkto:#point13B;spotgroup:group-point13B" position="-.2 0 -10" width="2" height="2"></a-image> 
+			<!--  left is .../// FRONT -->
+			<a-image spot="linkto:#point16B;spotgroup:group-point16B" position="0 0 10" width="2" height="2"></a-image>
+		
+			</a-entity>
+		
+		<a-entity id="group-point15" scale="0 0 0">
+			<!-- right which is... /// BACK -->
+			<a-image spot="linkto:#point14;spotgroup:group-point14" position="6 0 0" width="2" height="2"></a-image>
+		</a-entity>
+	
+		<a-entity id="group-point13B" scale="0 0 0">
+			<!-- right which is... /// FRONT -->
+			<a-image spot="linkto:#point12B;spotgroup:group-point12B" position="-.2 0 -10" width="2" height="2"></a-image>
+			<!-- right which is... /// BACK -->
+			<a-image spot="linkto:#point14;spotgroup:group-point14" position="0 0 10" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point12B" scale="0 0 0">
+			<!--  /// RIGHT -->
+			<a-image spot="linkto:#point11L;spotgroup:group-point11L" position="6 0 0" width="2" height="2"></a-image>
+			<!-- right which is... /// BACK -->
+			<a-image spot="linkto:#point13B;spotgroup:group-point13B" position="0 0 10" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point11L" scale="0 0 0">
+			<!-- right is FRONT ///  -->
+			<a-image spot="linkto:#point10R;spotgroup:group-point10R" position="6 0 0" width="2" height="2"></a-image>
+			<!--  left is .../// BACK -->
+			<a-image spot="linkto:#point12B;spotgroup:group-point12B" position="-8 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point10R" scale="0 0 0">
+			<!-- right is FRONT ///  -->
+			<a-image spot="linkto:#point9L;spotgroup:group-point9L" position="6 0 0" width="2" height="2"></a-image>
+			<!--  left is .../// BACK -->
+			<a-image spot="linkto:#point11L;spotgroup:group-point11L" position="-8 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point9L" scale="0 0 0">
+			<!-- right is FRONT ///  -->
+			<a-image spot="linkto:#point10R;spotgroup:group-point10R" position="-8 0 0" width="2" height="2"></a-image>
+			<!--  left is .../// BACK -->
+			<a-image spot="linkto:#point5;spotgroup:group-point5" position="6 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point4" scale="0 0 0">
+			<!-- FRONT ///  -->
+			<a-image spot="linkto:#point3;spotgroup:group-point3" position="1.2 0 10" width="2" height="2"></a-image>
+			<!--   BACK -->
+			<a-image spot="linkto:#point5;spotgroup:group-point5" position="-.2 0 -10" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point5" scale="0 0 0">
+			<!-- FRONT ///  -->
+			<a-image spot="linkto:#point6;spotgroup:group-point6" position="-.2 0 -10" width="2" height="2"></a-image>
+			<!--   BACK -->
+			<a-image spot="linkto:#point4;spotgroup:group-point4" position="1.2 0 10" width="2" height="2"></a-image>
+			<!-- LEFT -->
+			<a-image spot="linkto:#point9L;spotgroup:group-point9L" position="-8 0 0" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point6" scale="0 0 0">
+			<!-- FRONT ///  -->
+			<a-image spot="linkto:#point5;spotgroup:group-point5" position="0 0 6" width="2" height="2"></a-image>
+			<!--   BACK -->
+			<a-image spot="linkto:#point7;spotgroup:group-point7" position="-.2 0 -8" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point5" scale="0 0 0">
+			<!-- FRONT ///  -->
+			<a-image spot="linkto:#point4;spotgroup:group-point4" position="0 0 6" width="2" height="2"></a-image>
+			<!--   BACK -->
+			<a-image spot="linkto:#point6;spotgroup:group-point6" position="-.2 0 -10" width="2" height="2"></a-image>
+		</a-entity>
+		
+
+		
+		<a-entity id="group-point3" scale="0 0 0">
+			<!-- BACK ///  -->
+			<a-image spot="linkto:#point2;spotgroup:group-point2" position="0 0 6" width="2" height="2"></a-image>
+			<!--   FRONT -->
+			<a-image spot="linkto:#point4;spotgroup:group-point4" position="-.2 0 -8" width="2" height="2"></a-image>
+			<!-- left -->
+			<a-image spot="linkto:#pointSL;spotgroup:group-sl251" position="-8 0 0" width="2" height="2"></a-image>
+		</a-entity>
+
+		<a-entity id="group-point7" scale="0 0 0">
+			<!-- FRONT ///  -->
+			<a-image spot="linkto:#point6;spotgroup:group-point6" position="0 0 6" width="2" height="2"></a-image>
+			<!--   BACK -->
+			<a-image spot="linkto:#point8;spotgroup:group-point8" position="-.2 0 -10" width="2" height="2"></a-image>
+		</a-entity>
+		
+		<a-entity id="group-point8" scale="0 0 0">
+			<!-- FRONT ///  -->
+			<a-image spot="linkto:#point7;spotgroup:group-point6" position="0 0 6" width="2" height="2"></a-image>
+		</a-entity>		
+	
+		<a-entity id="group-sl251" scale="0 0 0">
+			<!-- right -->
+			<a-image spot="linkto:#point3;spotgroup:group-point3" position="6 0 7" width="2" height="2"></a-image>
+		</a-entity>
+	
+	
+	
+	<!--  BACKGROUND   -->
+	
+      <a-sky id="skybox" src="#pointEN" rotation="0 -90 -5"></a-sky>
+      
+      <a-entity id="cam" camera position="0 1.6 0" look-controls>
+        <a-entity cursor="fuse:true;fuseTimeout:2000"
+                  geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+                  position="0 0 -1.8"
+                  material="shader:flat;color:#ff0000"
+                  animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
+        </a-entity>
+      </a-entity>
+      
+    </a-scene>
+  </body>
+</html>
